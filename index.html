@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>NY Times Article Search</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-9">
+          
+          <div class="row">
+            <div class="col-12">
+              <div class="card text-white bg-dark mb-3" style="text-align: center; vertical-align: middle; padding: 10px">
+                <div class="card-body">
+                  <h1>New York Times Search</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header text-white bg-dark">
+                  Search Parameters
+                </div>
+                <div class="card-body">
+                <form method="POST" name="contactform" action="http://www.ivytech.co/md/contact.php">
+                  <input name="redirect" type="hidden" value="">
+                  <p>
+                    <label>Search Term:</label>
+                    <input id="pSearch" class="form-control mr-sm-2" type="text" value="Honda Point Disaster" onfocus="if (this.value=='Search Term') this.value='';" onfocusout="if (this.value=='') this.value='Honda Point Disaster';">
+                  </p>
+                  <p>
+                    <label>Number of Records to Retrieve:</label>
+                    <input id="pNum" class="form-control mr-sm-2" type="text" value="10" onfocus="if (this.value=='10') this.value='';" onfocusout="if (this.value=='') this.value='10';">
+                  </p>
+                  <p>
+                    <label>Start Year:</label>
+                    <input id="pStart" class="form-control mr-sm-2" type="text" value="1923" onfocus="if (this.value=='1923') this.value='';" onfocusout="if (this.value=='') this.value='1923';">
+                  </p>
+                  <p>
+                    <label>End Year (Optional):</label>
+                    <input id="pEnd" class="form-control mr-sm-2" type="text">
+                  </p>
+                  <p>
+                    <input id="bSearch" class="btn btn-secondary" type="button" value="Search &raquo;">
+                    <input id="bReset" class="btn btn-secondary" type="reset" value="&xotime; Clear Results">
+                  </p>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header text-white bg-dark">
+                  Top Articles
+                </div>
+                <div class="card-body">
+                  <div class="article-result">
+                    <div class="article-index">1</div>
+                    <div class="article-title">
+                      Example Article; WHO AND DEEWHO: University of Nowhere Press. 123,456 pp.
+                    </div>
+                    <div class="article-section">
+                      Section: null
+                    </div>
+                    <div class="article-time">
+                      2017-11-20T00:00:00Z
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr>
+
+    </main>
+
+    <footer>
+      <p>&copy; Bootcamp UT! 2017</p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <script src="offcanvas.js"></script>
+  </body>
+</html>
