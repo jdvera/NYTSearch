@@ -1,17 +1,19 @@
-/*
- * Style tweaks
- * --------------------------------------------------
- */
 html,
 body {
-  overflow-x: hidden; /* Prevent scroll on narrow devices */
+  overflow-x: hidden;
 }
 body {
-  padding: 5px 30px 5px 30px;
+  /*padding: 5px 30px 5px 30px;*/
   font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 14px;
   background: #eeeeee;
   color: #555555;
 }
-
+footer {
+  padding: 20px;
+}
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
 
