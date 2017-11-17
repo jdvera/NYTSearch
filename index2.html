@@ -72,14 +72,16 @@
                   <div id="article-block">
 
                     <!-- example search entry, these need to be added dynamically -->
-                    <div class="article-index">1</div>
-                    <div class="article-headline">
-                      Example Article; WHO AND DEEWHO: University of Nowhere Press. 123 pp.
+                    <div class="article-entry">
+                      <div class="article-index">1</div>
+                      <div class="article-headline">
+                        Example Article; WHO AND DEEWHO: University of Nowhere Press. 123 pp.
+                      </div>
+                      <hr>
+                      <p>Snippet: null</p>
+                      <p>2017-11-20T00:00:00Z</p>
+                      <p><a href="#">http://www.whatever.com/articleid...</a></p>
                     </div>
-                    <hr>
-                    <p>Snippet: null</p>
-                    <p>2017-11-20T00:00:00Z</p>
-                    <p><a href="#">http://www.whatever.com/articleid...</a></p>
                     <!-- end of entry -->
 
                   </div>
@@ -121,14 +123,16 @@
           var dHTML = '';
           for (i = 0; i < jData.length; i++) {
             dHTML +=
-              '<div class="article-index">' + (i + 1) + '</div>\n' +
-              '<div class="article-headline">\n' +
-              '\t' + jData[i].headline.main + '\n' +
-              '</div>\n' +
-              '<hr>\n' +
-              '<p>Snippet: ' + jData[i].snippet + '</p>\n' +
-              '<p>' + jData[i].pub_date + '</p>\n' +
-              '<p><a href="' + jData[i].web_url + '">' + jData[i].web_url + '</a></p>\n';
+              '<div class="article-entry">' +
+              '\t<div class="article-index">' + (i + 1) + '</div>\n' +
+              '\t<div class="article-headline">\n' +
+              '\t\t' + jData[i].headline.main + '\n' +
+              '\t</div>\n' +
+              '\t<hr>\n' +
+              '\t<p>Snippet: ' + jData[i].snippet + '</p>\n' +
+              '\t<p>' + jData[i].pub_date + '</p>\n' +
+              '\t<p><a href="' + jData[i].web_url + '">' + jData[i].web_url + '</a></p>\n' +
+              '</div>';
               // console.log(dHTML);
           }
           $("#article-block").empty();
