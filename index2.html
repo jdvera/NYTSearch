@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>NY Times Article Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-9 col-centered">
+          
+          <div class="row">
+            <div class="col-12">
+              <div class="card text-white bg-dark mb-3" style="text-align: center; vertical-align: middle; padding: 10px">
+                <div class="card-body">
+                  <h1>New York Times Search</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header text-white bg-dark">
+                  Search Parameters
+                </div>
+                <div class="card-body">
+                <form>
+                  <input name="redirect" type="hidden" value="">
+                  <p>
+                    <label>Search Term:</label>
+                    <input id="pSearch" class="form-control mr-sm-2" type="text" value="Honda Point Disaster" onfocus="if (this.value=='Honda Point Disaster') this.value='';" onfocusout="if (this.value=='') this.value='Honda Point Disaster';">
+                  </p>
+                  <p>
+                    <label>Number of Records to Retrieve:</label>
+                    <input id="pNum" class="form-control mr-sm-2" type="text" value="10" onfocus="if (this.value=='10') this.value='';" onfocusout="if (this.value=='') this.value='10';">
+                  </p>
+                  <p>
+                    <label>Start Year:</label>
+                    <input id="pStart" class="form-control mr-sm-2" type="text" value="1923" onfocus="if (this.value=='1923') this.value='';" onfocusout="if (this.value=='') this.value='1923';">
+                  </p>
+                  <p>
+                    <label>End Year (Optional):</label>
+                    <input id="pEnd" class="form-control mr-sm-2" type="text">
+                  </p>
+                  <p>
+                    <input id="btnSearch" class="btn btn-secondary" style="cursor: pointer;" type="button" value="Search &raquo;">
+                    <input id="btnReset" class="btn btn-secondary" style="cursor: pointer;" type="reset" value="&xotime; Clear Results">
+                  </p>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header text-white bg-dark">
+                  Top Articles
+                </div>
+                <div class="card-body" style="padding: 10px;">
+                  
+                  <div id="article-block">
+
+                    <!-- example search entry, these need to be added dynamically -->
+                    <div class="article-index">1</div>
+                    <div class="article-headline">
+                      Example Article; WHO AND DEEWHO: University of Nowhere Press. 123 pp.
+                    </div>
+                    <hr>
+                    <p>Snippet: null</p>
+                    <p>2017-11-20T00:00:00Z</p>
+                    <p><a href="#">http://www.whatever.com/articleid...</a></p>
+                    <!-- end of entry -->
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p style="text-align: center;">&copy; Bootcamp UT! 2017</p>
+    </footer>
+  
+    <script type="text/javascript">
+
+      $(document).on("click", "#btnSearch", searchArticles);
+
+      function searchArticles() {
+        var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        // NEED TO FIGURE OUT HOW TO LIMIT NUMBER OF ARTICLES RETURNED!!
+        var eYear = $("#pEnd").val();
+        if (eYear.length === 0) {eYear = new Date().getFullYear();}
+        url += '?' + $.param({
+          'api-key': "dbb35dcc6f964633be7b61e6d4fccd5a",
+          'q': $("#pSearch").val(),
+          'begin_date': $("#pStart").val() + '0101', // YYYYMMDD
+          'end_date': eYear + '1231', // YYYYMMDD
+          'fl': "headline, snippet, pub_date, web_url"
+        });
+        $.ajax({
+          url: url,
+          method: 'GET',
+        }).done(function(result) {
+          var jData = result.response.docs;
+          var dHTML = '';
+          for (i = 0; i < jData.length; i++) {
+            dHTML +=
+              '<div class="article-index">' + (i + 1) + '</div>\n' +
+              '<div class="article-headline">\n' +
+              '\t' + jData[i].headline.main + '\n' +
+              '</div>\n' +
+              '<hr>\n' +
+              '<p>Snippet: ' + jData[i].snippet + '</p>\n' +
+              '<p>' + jData[i].pub_date + '</p>\n' +
+              '<p><a href="' + jData[i].web_url + '">' + jData[i].web_url + '</a></p>\n';
+              // console.log(dHTML);
+          }
+          $("#article-block").empty();
+          $("#article-block").append(dHTML);
+        }).fail(function(err) {
+          throw err;
+        });
+      }
+    </script>
+
+  </body>
+</html>

@@ -17,19 +17,20 @@ footer {
   float: none;
   margin: 0 auto;
 }
-.article-block {
-  margin: 10px;
+#article-block {
+  /*margin: 10px;*/
   padding: 10px;
   background-color: #eeeeee;
   font-size: 11px;
   border-radius: 3px
 }
 
-.article-block a {
+#article-block a {
   color: #55aa77;;
+  margin-bottom: 10px;
 }
 
-.article-block .article-index {
+#article-block .article-index {
   padding: 5px;
   margin: 0px 7px 0px 0px;
   font-weight: 700;
@@ -40,7 +41,7 @@ footer {
   float: left;
 }
 
-.article-block .article-title {
+#article-block .article-title {
   padding: 5px;
   font-weight: 700;
   font-size: 16px;
