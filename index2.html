@@ -37,7 +37,7 @@
                   <input name="redirect" type="hidden" value="">
                   <p>
                     <label>Search Term:</label>
-                    <input id="pSearch" class="form-control mr-sm-2" type="text" value="Honda Point Disaster" onfocus="if (this.value=='Honda Point Disaster') this.value='';" onfocusout="if (this.value=='') this.value='Honda Point Disaster';">
+                    <input id="pSearch" class="form-control mr-sm-2" type="text" value="Calvin Coolidge" onfocus="if (this.value=='Calvin Coolidge') this.value='';" onfocusout="if (this.value=='') this.value='Calvin Coolidge';">
                   </p>
                   <p>
                     <label>Number of Records to Retrieve:</label>
@@ -106,6 +106,7 @@
       function searchArticles() {
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
         // NEED TO FIGURE OUT HOW TO LIMIT NUMBER OF ARTICLES RETURNED!!
+        console.log($("#pSearch").val());
         var eYear = $("#pEnd").val();
         if (eYear.length === 0) {eYear = new Date().getFullYear();}
         url += '?' + $.param({
