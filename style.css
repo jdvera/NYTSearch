@@ -8,6 +8,7 @@ body {
   font-size: 14px;
   background: #eeeeee;
   color: #555555;
+  line-height: .75;
 }
 footer {
   padding: 20px;
@@ -16,4 +17,31 @@ footer {
   float: none;
   margin: 0 auto;
 }
+.article-block {
+  margin: 10px;
+  padding: 10px;
+  background-color: #eeeeee;
+  font-size: 11px;
+  border-radius: 3px
+}
 
+.article-block a {
+  color: #55aa77;;
+}
+
+.article-block .article-index {
+  padding: 5px;
+  margin: 0px 7px 0px 0px;
+  font-weight: 700;
+  text-align: center;
+  background-color: #111144;
+  color: #ffffff;
+  border-radius: 3px;
+  float: left;
+}
+
+.article-block .article-title {
+  padding: 5px;
+  font-weight: 700;
+  font-size: 16px;
+}
